@@ -1085,7 +1085,7 @@ public class ProblemZ3 extends ProblemGeneral {
 	public double getRealValue(Object dpVar) {
 		try {
             Model model = solver.getModel();
-            String strResult = model.eval((Expr) dpVar, true).toString().replaceAll("\\s+", "");
+            String strResult = model.eval((Expr) dpVar, true).toString().replaceAll(" ","E").replaceAll("\\s+", "");
             Expr temp = model.eval((Expr) dpVar, false);
             if (temp instanceof com.microsoft.z3.RatNum) {
                 strResult = ((com.microsoft.z3.RatNum) temp).toDecimalString(10);
